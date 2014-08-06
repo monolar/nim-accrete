@@ -1,34 +1,27 @@
 # Accrete main file
 
-import os, tables, strutils, commandeer
+import commandeer, times, math
 
-commandline:
-  exitoption "help", "h",
-             "Usage: ..."
+import lib/generator
 
-# Parses the command line parameters.
-# Strings containing '=' are interpreted as value assignments
-# Strings not containing '=' are interpreted as flags set to 'true'
-# returns TTable[string, string] with the result
-proc parseCommandlineParams(): TTable[string, string] =
-  var rawParams: TTable[string, string] = initTable[string, string]()
-  # ignore paramIndex 0 since it is the executable
-  for paramIndex in 1..paramCount():
-    if find(paramStr(paramIndex), '=') == -1:
-      rawParams.add(paramStr(paramIndex), "true")
-    else:
-      var segments = split(paramStr(paramIndex), '=')
-      rawParams.add(segments[0], segments[1])
-  rawParams
+proc usage(): string =
+  result = "Usage: accrete [--seed|-s=<seed>]"
 
-proc usage() =
-  echo "usage..."
+commandLine:
+  option seed, int, "seed", "s"
+  exitoption "help", "h", usage()
 
-#when isMainModule:
-#  echo "mainmodule"
-#  var rawParams = parseCommandlineParams()
-#  if rawParams.len() == 0:
-#    usage()
-#  else:
-#    for key in rawParams.keys:
-#      echo key & "='" & rawParams[key] & "'"
+when isMainModule:
+  var
+    effectiveSeed: int
+
+  if seed != 0:
+    effectiveSeed = seed
+    echo "using seed '" & $effectiveSeed & "'"
+  else:
+    var now = times.epochTime()
+    echo now
+    effectiveSeed = math.round(100000000 * now)
+    echo "using random seed '" & $effectiveSeed & "'"
+
+  generator.generate(effectiveSeed)
