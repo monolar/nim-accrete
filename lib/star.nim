@@ -8,7 +8,7 @@ type
 let sun* = Star(mass : 1.0)
 
 # returns the luminosity of a star in solar luminosities L☉
-method luminosity*(this: Star): float =
+method luminosity*(this: Star): float {.inline.} =
   var
     n: float
 
@@ -22,7 +22,7 @@ method luminosity*(this: Star): float =
 # http://en.wikipedia.org/wiki/Mass%E2%80%93luminosity_relation
 # Only valid for stars with mass > 0.08 M☉ and mass < 100 M☉
 # -> Only valif for main sequence stars
-method luminosity2*(this: Star): float =
+method luminosity2*(this: Star): float {.raises: [EInvalidValue] inline.} =
   if (this.mass < 0.08 * sun.mass):
     raise newException(EInvalidValue, "Star is too light! mass:'" & $this.mass & "' is smaller than '0.08'")
   elif (this.mass >= 0.08 * sun.mass) and (this.mass < 0.43 * sun.mass):
