@@ -1,6 +1,58 @@
-import mersenne
+import mersenne, dole, star
 
 proc generate*(seed: int) =
   var mt = newMersenneTwister(seed)
-  for i in 0..4:
-    echo mt.getNum
+  echo sun.luminosity()
+
+  echo Star(mass : 0.1).luminosity()
+  echo Star(mass : 0.2).luminosity()
+  echo Star(mass : 0.3).luminosity()
+  echo Star(mass : 0.4).luminosity()
+  echo Star(mass : 0.5).luminosity()
+  echo Star(mass : 0.6).luminosity()
+  echo Star(mass : 0.7).luminosity()
+  echo Star(mass : 0.8).luminosity()
+  echo Star(mass : 0.9).luminosity()
+  echo Star(mass : 1.0).luminosity()
+  echo Star(mass : 1.5).luminosity()
+  echo Star(mass : 2.0).luminosity()
+  echo Star(mass : 3.0).luminosity()
+  echo Star(mass : 4.0).luminosity()
+  echo Star(mass : 5.0).luminosity()
+  echo Star(mass : 6.0).luminosity()
+  echo Star(mass : 7.0).luminosity()
+  echo Star(mass : 8.0).luminosity()
+  echo Star(mass : 9.0).luminosity()
+  echo Star(mass : 10.0).luminosity()
+  echo Star(mass : 20.0).luminosity2()
+  echo Star(mass : 30.0).luminosity2()
+
+  echo "......."
+
+  echo Star(mass : 0.1).luminosity2()
+  echo Star(mass : 0.2).luminosity2()
+  echo Star(mass : 0.3).luminosity2()
+  echo Star(mass : 0.4).luminosity2()
+  echo Star(mass : 0.5).luminosity2()
+  echo Star(mass : 0.6).luminosity2()
+  echo Star(mass : 0.7).luminosity2()
+  echo Star(mass : 0.8).luminosity2()
+  echo Star(mass : 0.9).luminosity2()
+  echo Star(mass : 1.0).luminosity2()
+  echo Star(mass : 1.5).luminosity2()
+  echo Star(mass : 2.0).luminosity2()
+  echo Star(mass : 3.0).luminosity2()
+  echo Star(mass : 4.0).luminosity2()
+  echo Star(mass : 5.0).luminosity2()
+  echo Star(mass : 6.0).luminosity2()
+  echo Star(mass : 7.0).luminosity2()
+  echo Star(mass : 8.0).luminosity2()
+  echo Star(mass : 9.0).luminosity2()
+  echo Star(mass : 10.0).luminosity2()
+  echo Star(mass : 20.0).luminosity2()
+  echo Star(mass : 30.0).luminosity2()
+
+  echo Star(mass : -5.0).luminosity2()
+  echo Star(mass : 500.0).luminosity2()
+
+  # echo dole.innerDustLimit(sun.mass)
