@@ -2,7 +2,7 @@ import star, dole
 
 type
   AccretionDisk* = object
-    star*: Star
+    star*: Star not nil
 
 method innerBound*(this: AccretionDisk): float =
     return dole.innermostPlanet(this.star.mass)

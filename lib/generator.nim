@@ -1,4 +1,5 @@
-import mersenne, dole, star, accretion_disk
+import mersenne, star, accretion_disk
+import oopmacro
 
 proc generate*(seed: int) =
   var mt = newMersenneTwister(seed)
@@ -6,7 +7,4 @@ proc generate*(seed: int) =
   var myStar = Star(mass: 3.0)
   echo repr(myStar)
   var ad = AccretionDisk(star: myStar)
-
   echo repr(ad)
-
-  echo "done"

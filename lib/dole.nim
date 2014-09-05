@@ -3,7 +3,6 @@ import math
 proc scaleCubeRootMass(scale: float, mass: float): float =
   return scale * Math.pow(mass, 1.0/3.0)
 
-
 proc innermostPlanet*(stellar_mass: float): float =
   return scaleCubeRootMass(0.3, stellar_mass)
 
