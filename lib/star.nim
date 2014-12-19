@@ -3,7 +3,7 @@ import math
 
 const SOLAR_MASS*: float = 1.0
 
-class Star of TObject:
+class Star of RootObj:
   var mass*: float # in solar masses M☉
 
   # returns the luminosity of a star in solar luminosities L☉
@@ -21,15 +21,15 @@ class Star of TObject:
   # http://en.wikipedia.org/wiki/Mass%E2%80%93luminosity_relation
   # Only valid for stars with mass > 0.08 M☉ and mass < 100 M☉
   # -> Only valif for main sequence stars
-  method luminosity2*: float {.raises: [EInvalidValue] inline.} =
+  method luminosity2*: float {.raises: [ValueError] inline.} =
     if (this.mass < 0.08 * SOLAR_MASS):
-      raise newException(EInvalidValue, "Star is too light! mass:'" & $this.mass & "' is smaller than '0.08'")
+      raise newException(ValueError, "Star is too light! mass:'" & $this.mass & "' is smaller than '0.08'")
     elif (this.mass >= 0.08 * SOLAR_MASS) and (this.mass < 0.43 * SOLAR_MASS):
-      return 0.23 * Math.pow(this.mass / SOLAR_MASS, 2.3)
+      return 0.23 * math.pow(this.mass / SOLAR_MASS, 2.3)
     elif (this.mass >= 0.43 * SOLAR_MASS) and (this.mass < 2.0 * SOLAR_MASS):
-      return Math.pow(this.mass / SOLAR_MASS, 4)
+      return math.pow(this.mass / SOLAR_MASS, 4)
     elif (this.mass >= 2.0 * SOLAR_MASS) and (this.mass < 20 * SOLAR_MASS):
-      return 1.5 * Math.pow(this.mass / SOLAR_MASS, 3.5)
+      return 1.5 * math.pow(this.mass / SOLAR_MASS, 3.5)
     elif (this.mass >= 20.0 * SOLAR_MASS):
       return 3200 * (this.mass / SOLAR_MASS)
     else:
