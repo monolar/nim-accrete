@@ -17,10 +17,10 @@ class Star of RootObj:
       n = 0.5 * (2.0 - this.mass) + 4.4
     return math.pow(this.mass, n)
 
-  # returns the luminosity of a star in solar luminosities L☉
+  # Returns the luminosity of a star in solar luminosities L☉
   # http://en.wikipedia.org/wiki/Mass%E2%80%93luminosity_relation
   # Only valid for stars with mass > 0.08 M☉ and mass < 100 M☉
-  # -> Only valif for main sequence stars
+  # -> Only valid for main sequence stars
   method luminosity2*: float {.raises: [ValueError] inline.} =
     if (this.mass < 0.08 * SOLAR_MASS):
       raise newException(ValueError, "Star is too light! mass:'" & $this.mass & "' is smaller than '0.08'")
@@ -33,6 +33,7 @@ class Star of RootObj:
     elif (this.mass >= 20.0 * SOLAR_MASS):
       return 3200 * (this.mass / SOLAR_MASS)
     else:
+      # TODO o rly? Where is the check for larger than 100?
       raise newException(EInvalidValue, "Star is too heavy! mass:'" & $this.mass & "' is larger than '100'")
 
 export Star
